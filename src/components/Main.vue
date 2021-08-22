@@ -20,6 +20,6 @@ export default {
         // height: 100vh; //fake
         flex-grow: 1;
         color: #666;
-        background-color: #f00;
+        background-color: #eee;
     }
 </style>

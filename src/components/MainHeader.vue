@@ -5,7 +5,7 @@
             <i class="far fa-envelope"></i>
             <img src="../assets/avatar_8.jpg" alt="avatar">
             <div>Marco Bagnasco</div>
-            <i class="fas fa-angle-down"></i>
+            <i class="fas fa-chevron-down"></i>
         </div>
     </header>
 </template>
@@ -19,7 +19,7 @@ export default {
 <style lang="scss" scoped>
     .main-header {
         padding: 10px 20px;
-        background-color: #eee;
+        background-color: #ddd;
         img{
             height: 25px;
             margin: 0 7px;
