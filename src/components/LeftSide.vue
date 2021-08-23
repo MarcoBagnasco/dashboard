@@ -45,11 +45,6 @@ export default {
     components:{
         MenuItem,
     },
-    data(){
-        return {
-
-        }
-    }
 }
 </script>
 
