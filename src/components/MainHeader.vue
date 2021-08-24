@@ -18,6 +18,11 @@ export default {
 
 <style lang="scss" scoped>
     .main-header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 45px;
+        width: 100%;
         padding: 10px 20px;
         background-color: #ddd;
         img{

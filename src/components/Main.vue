@@ -1,27 +1,37 @@
 <template>
     <div class="main-content">
         <MainHeader/>
+        <!-- Chart Area -->
+        <div class="scroll-part">
+            <Connections v-if="load" :connections="data.MonthlyConnections"/>
+        </div>
     </div>
 </template>
 
 <script>
 import MainHeader from './MainHeader.vue';
+import Connections from './Connections.vue';
 import axios from 'axios';
 
 export default {
     name: 'Main',
     components:{
         MainHeader,
+        Connections,
     },
     data(){
         return {
-            data: [],
+            load: false,
+            data: {},
         }
     },
     created(){
         this.getData();
     },
     methods: {
+        /**
+         * Get Data from server
+         */
         getData(){
             let config = {
                 headers: {
@@ -29,10 +39,10 @@ export default {
                     'X-Bin-Meta' : false
                 }
             }
-            console.log('ciao');
             axios.get('https://api.jsonbin.io/v3/b/6123d5ab2aa80036126e9315', config)
             .then(res => {
                 this.data = res.data;
+                this.load = true;
             })
             .catch(err => {
                 console.log(err);
@@ -44,8 +54,16 @@ export default {
 
 <style lang="scss" scoped>
     .main-content {
+        position: relative;
+        padding: 45px 20px;
         flex-grow: 1;
         color: #666;
+        text-align: center;
         background-color: #eee;
+
+        .scroll-part{
+            height: calc(100vh - 45px) ;
+            overflow: auto;
+        }
     }
 </style>
