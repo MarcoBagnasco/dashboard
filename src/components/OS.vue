@@ -1,20 +1,20 @@
 <template>
     <div class="chart">
-        <h3>Users Age Range</h3>
-        <ChartBar :height="250" :chartdata="chartdata" :options="options"/>
+        <h3>Operating System</h3>
+        <ChartDoughnut :height="250" :chartdata="chartdata" :options="options"/>
     </div>
 </template>
 
 <script>
-import ChartBar from './ChartBar.vue';
+import ChartDoughnut from "./ChartDoughnut.vue";
 
 export default {
-    name: 'UsersAge',
+    name: 'OS',
     props:{
-        ages: Array,
+        devices: Array,
     },
-    components:{
-        ChartBar,
+    components: {
+        ChartDoughnut,
     },
     data(){
         return { 
@@ -29,13 +29,15 @@ export default {
                             '#e8c3b9',
                             '#c45850'
                         ],
+                        hoverBorderWidth: 8,
                         data: []
                     }
                 ],
             },
             options: {
                 legend: {
-                    display: false,
+                    position: 'right',
+                    align: 'start',
                 },
                 layout: {
                     padding: {
@@ -55,18 +57,18 @@ export default {
          * Set Data for the Chart
          */
         setData(){
-            this.ages.forEach(item => {
-                this.chartdata.labels.push(item.range);
+            this.devices.forEach(item => {
+                this.chartdata.labels.push(item.os);
                 this.chartdata.datasets[0].data.push(item.connections);
             })
         }
-    }
+    }    
 }
 </script>
 
 <style lang="scss" scoped>
     .chart{
-        margin-right: 20px;
-        width: calc(50% - 20px);
+        margin-left: 20px;
+        width: calc(50% - 20px);      
     }
 </style>

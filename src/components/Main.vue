@@ -6,6 +6,7 @@
             <Connections :connections="data.MonthlyConnections"/>
             <div class="flex">
                 <UsersAge :ages="data.UsersAgeRange"/>
+                <OS :devices="data.Devices"/>
             </div>
         </div>
     </div>
@@ -15,6 +16,7 @@
 import MainHeader from './MainHeader.vue';
 import Connections from './Connections.vue';
 import UsersAge from './UsersAge.vue';
+import OS from './OS.vue';
 import axios from 'axios';
 
 export default {
@@ -23,6 +25,7 @@ export default {
         MainHeader,
         Connections,
         UsersAge,
+        OS,
     },
     data(){
         return {
