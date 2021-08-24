@@ -2,8 +2,11 @@
     <div class="main-content">
         <MainHeader/>
         <!-- Chart Area -->
-        <div class="scroll-part">
-            <Connections v-if="load" :connections="data.MonthlyConnections"/>
+        <div v-if="load" class="scroll-part">
+            <Connections :connections="data.MonthlyConnections"/>
+            <div class="flex">
+                <UsersAge :ages="data.UsersAgeRange"/>
+            </div>
         </div>
     </div>
 </template>
@@ -11,6 +14,7 @@
 <script>
 import MainHeader from './MainHeader.vue';
 import Connections from './Connections.vue';
+import UsersAge from './UsersAge.vue';
 import axios from 'axios';
 
 export default {
@@ -18,6 +22,7 @@ export default {
     components:{
         MainHeader,
         Connections,
+        UsersAge,
     },
     data(){
         return {

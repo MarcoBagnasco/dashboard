@@ -1,5 +1,5 @@
 <template>
-  <div class="connections">
+  <div class="chart">
       <h3>Monthly Connections</h3>
       <ChartLine :height="250" :chartdata="chartdata" :options="options"/>
   </div>
@@ -39,6 +39,11 @@ export default {
                             }
                     }],
                 },
+                layout: {
+                    padding: {
+                        top: 20,
+                    }
+                },
                 responsive: true,
                 maintainAspectRatio: false,
             },
@@ -60,17 +65,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss" scoped>
-    .connections{
-        margin-top: 20px;
-        padding: 10px;
-        background-color: #fff;
-        border-radius: 5px;
-
-        h3{
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-    }
-</style>
