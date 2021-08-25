@@ -32,11 +32,11 @@ export default {
             options: {
                 scales:{
                     yAxes: [{
-                            ticks: {
-                                stepSize: 1000,
-                                min: 0,
-                                suggestedMax: 5000,
-                            }
+                        ticks: {
+                            stepSize: 1000,
+                            min: 0,
+                            suggestedMax: 5000,
+                        }
                     }],
                 },
                 layout: {

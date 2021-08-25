@@ -9,15 +9,17 @@
 import ChartBar from './ChartBar.vue';
 
 export default {
-    name: 'UsersAge',
-    props:{
-        ages: Array,
-    },
+    name: 'UsersToday',
     components:{
         ChartBar,
     },
+    props: {
+        connections: Array,
+    },
     data(){
-        return { 
+        return {
+            usersRange: [],
+            usersCount: [],
             chartdata: {
                 labels: [],
                 datasets: [
@@ -34,6 +36,15 @@ export default {
                 ],
             },
             options: {
+                scales:{
+                    yAxes: [{
+                        ticks: {
+                            stepSize: 10,
+                            min: 0,
+                            suggestedMax: 50,
+                        }
+                    }],
+                },
                 legend: {
                     display: false,
                 },
@@ -48,18 +59,46 @@ export default {
         }
     },
     created(){
-        this.setData();
+        this.aggregate();
     },
     methods: {
+        /**
+         * Aggregate data from json
+         */
+        aggregate(){
+            // Create Range array
+            this.connections.forEach(item => {
+                if(!this.usersRange.includes(item.age)){
+                    this.usersRange.push(item.age)
+                }
+            })
+            // Create objects with range property
+            this.usersRange.forEach(item =>{
+                this.usersCount.push({range: item, connections: 0})
+            })
+            // Add number of connections to objects
+            this.connections.forEach(item => {
+                const age = item.age;
+                this.usersCount.forEach(obj => {
+                    if(obj.range == age){
+                        obj.connections++;
+                    }
+                })
+            });
+
+            this.setData();
+        },
+
         /**
          * Set Data for the Chart
          */
         setData(){
-            this.ages.forEach(item => {
+            this.usersCount.forEach(item => {
                 this.chartdata.labels.push(item.range);
                 this.chartdata.datasets[0].data.push(item.connections);
             })
-        }
+        },
+
     }
 }
 </script>

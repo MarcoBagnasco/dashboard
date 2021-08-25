@@ -1,5 +1,5 @@
 <template>
-    <div class="chart">
+    <div class="chart mid">
         <h3>Operating System</h3>
         <ChartDoughnut :height="250" :chartdata="chartdata" :options="options"/>
     </div>
@@ -65,9 +65,3 @@ export default {
     }    
 }
 </script>
-
-<style lang="scss" scoped>
-    .chart{
-        width: calc(50% - 20px);      
-    }
-</style>
