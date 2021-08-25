@@ -1,4 +1,5 @@
-# dashboard
+# Dashboard
+### Exercising Chart.js
 
 ## Project setup
 ```
