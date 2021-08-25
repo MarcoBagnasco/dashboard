@@ -3,11 +3,19 @@
         <MainHeader/>
         <!-- Chart Area -->
         <div v-if="load" class="scroll-part">
-            <Connections :connections="data.MonthlyConnections"/>
-            <div class="flex">
+            <!-- Monthly Connections -->
+            <Connections :connections="data.MonthlyConnections"/>     
+
+            <div class="flex jc-between">
+                <!-- Users Age Range -->
                 <UsersAge :ages="data.UsersAgeRange"/>
+
+                <!-- Operating System -->
                 <OS :devices="data.Devices"/>
-            </div>
+            </div>  
+
+            <!-- Solar Power -->
+            <Solar/>    
         </div>
     </div>
 </template>
@@ -17,6 +25,7 @@ import MainHeader from './MainHeader.vue';
 import Connections from './Connections.vue';
 import UsersAge from './UsersAge.vue';
 import OS from './OS.vue';
+import Solar from './Solar.vue';
 import axios from 'axios';
 
 export default {
@@ -26,6 +35,7 @@ export default {
         Connections,
         UsersAge,
         OS,
+        Solar,
     },
     data(){
         return {
@@ -55,7 +65,7 @@ export default {
             .catch(err => {
                 console.log(err);
             });
-        }
+        },
     }
 }
 </script>
@@ -63,7 +73,7 @@ export default {
 <style lang="scss" scoped>
     .main-content {
         position: relative;
-        padding: 45px 20px;
+        padding-top: 45px;
         flex-grow: 1;
         color: #666;
         text-align: center;
@@ -71,6 +81,7 @@ export default {
 
         .scroll-part{
             height: calc(100vh - 45px) ;
+            padding: 0 20px;
             overflow: auto;
         }
     }

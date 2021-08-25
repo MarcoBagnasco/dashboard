@@ -66,7 +66,6 @@ export default {
 
 <style lang="scss" scoped>
     .chart{
-        margin-right: 20px;
         width: calc(50% - 20px);
     }
 </style>

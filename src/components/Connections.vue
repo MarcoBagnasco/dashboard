@@ -1,8 +1,8 @@
 <template>
-  <div class="chart">
-      <h3>Monthly Connections</h3>
-      <ChartLine :height="250" :chartdata="chartdata" :options="options"/>
-  </div>
+    <div class="chart">
+        <h3>Monthly Connections</h3>
+        <ChartLine :height="250" :chartData="chartdata" :options="options"/>
+    </div>
 </template>
 
 <script>

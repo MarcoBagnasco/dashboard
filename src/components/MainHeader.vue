@@ -25,6 +25,8 @@ export default {
         width: 100%;
         padding: 10px 20px;
         background-color: #ddd;
+        z-index: 10;
+        
         img{
             height: 25px;
             margin: 0 7px;
