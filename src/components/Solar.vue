@@ -3,7 +3,7 @@
         <i class="fas fa-play play" :class="{stop: !play}" @click="updateChart"></i>       
         <div class="chart">
             <h3>Solar Power</h3>
-            <ChartLine :height="250" :chart-data="chartdata" :options="options"/>
+            <ChartLine :height="300" :chart-data="chartdata" :options="options"/>
         </div>
     </div>
 </template>
@@ -85,7 +85,7 @@ export default {
                         clearInterval(time);
                         this.play = true;
                     }
-                }, 200);
+                }, 500);
             }
         },
 

@@ -1,25 +1,25 @@
 <template>
     <div class="chart mid">
-        <h3>Users Age Range</h3>
-        <ChartBar :height="300" :chartdata="chartdata" :options="options"/>
+        <h3>Operating System</h3>
+        <ChartDoughnut :height="300" :chartdata="chartdata" :options="options"/>
     </div>
 </template>
 
 <script>
-import ChartBar from './ChartBar.vue';
+import ChartDoughnut from "./ChartDoughnut.vue";
 
 export default {
-    name: 'UsersToday',
-    components:{
-        ChartBar,
-    },
-    props: {
+    name: 'OSToday',
+    props:{
         connections: Array,
+    },
+    components: {
+        ChartDoughnut,
     },
     data(){
         return {
-            usersRange: [],
-            usersCount: [],
+            os: [],
+            osCount: [],
             chartdata: {
                 labels: [],
                 datasets: [
@@ -31,22 +31,15 @@ export default {
                             '#e8c3b9',
                             '#c45850'
                         ],
+                        hoverBorderWidth: 8,
                         data: []
                     }
                 ],
             },
             options: {
-                scales:{
-                    yAxes: [{
-                        ticks: {
-                            stepSize: 10,
-                            min: 0,
-                            suggestedMax: 50,
-                        }
-                    }],
-                },
                 legend: {
-                    display: false,
+                    position: 'right',
+                    align: 'start',
                 },
                 layout: {
                     padding: {
@@ -68,19 +61,19 @@ export default {
         aggregate(){
             // Create Range array
             this.connections.forEach(item => {
-                if(!this.usersRange.includes(item.age)){
-                    this.usersRange.push(item.age)
+                if(!this.os.includes(item.device)){
+                    this.os.push(item.device)
                 }
             })
             // Create objects with range property
-            this.usersRange.forEach(item =>{
-                this.usersCount.push({range: item, connections: 0})
+            this.os.forEach(item =>{
+                this.osCount.push({os: item, connections: 0})
             })
             // Add number of connections to objects
             this.connections.forEach(item => {
-                const age = item.age;
-                this.usersCount.forEach(obj => {
-                    if(obj.range == age){
+                const device = item.device;
+                this.osCount.forEach(obj => {
+                    if(obj.os == device){
                         obj.connections++;
                     }
                 })
@@ -93,11 +86,11 @@ export default {
          * Set Data for the Chart
          */
         setData(){
-            this.usersCount.forEach(item => {
-                this.chartdata.labels.push(item.range);
+            this.osCount.forEach(item => {
+                this.chartdata.labels.push(item.os);
                 this.chartdata.datasets[0].data.push(item.connections);
             })
         },
-    }
+    }    
 }
 </script>

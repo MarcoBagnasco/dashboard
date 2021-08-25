@@ -24,7 +24,7 @@
                 <UsersToday :connections="connections"/>
 
                 <!-- Operating System -->
-                <OS :devices="data.Devices"/>
+                <OSToday :connections="connections"/>
             </div>  
         </div>
     </div>
@@ -37,6 +37,7 @@ import UsersAge from './UsersAge.vue';
 import OS from './OS.vue';
 import Solar from './Solar.vue';
 import UsersToday from './UsersToday.vue';
+import OSToday from './OSToday.vue';
 import axios from 'axios';
 
 export default {
@@ -48,6 +49,7 @@ export default {
         OS,
         Solar,
         UsersToday,
+        OSToday,
     },
     data(){
         return {
@@ -90,41 +92,6 @@ export default {
             axios.get(`${this.url}/6123d5712aa80036126e92f9`, this.config)
             .then(res => {
                 this.connections = res.data;
-                // res.data.forEach(item => {
-                //     if(!this.usersRange.includes(item.age)){
-                //         this.usersRange.push(item.age)
-                //     }
-                // })
-                // this.usersRange.forEach(item =>{
-                //     this.connections.push({range: item, connections: 0})
-                // })
-                // res.data.forEach(item => {
-                //     const age = item.age;
-                //     this.connections.forEach(obj => {
-                //         if(obj.range == age){
-                //             obj.connections++;
-                //         }
-                //     })
-                    // switch (item.age) {
-                    //     case '46-60':
-                    //         this.connections[0].connections++;
-                    //         break;
-                    //     case '26-35':
-                    //         this.connections[1].connections++;
-                    //         break;
-                    //     case '17-25':
-                    //         this.connections[2].connections++;
-                    //         break;
-                    //     case '36-45':
-                    //         this.connections[3].connections++;
-                    //         break;
-                    //     case '0-16':
-                    //         this.connections[4].connections++;
-                    //         break;
-                            
-
-                    // }
-                // })
                 this.load2 = true;
             })
             .catch(err => {

@@ -1,7 +1,7 @@
 <template>
     <div class="chart mid">
         <h3>Operating System</h3>
-        <ChartDoughnut :height="250" :chartdata="chartdata" :options="options"/>
+        <ChartDoughnut :height="300" :chartdata="chartdata" :options="options"/>
     </div>
 </template>
 

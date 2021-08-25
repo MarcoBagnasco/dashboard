@@ -1,7 +1,7 @@
 <template>
     <div class="chart mid">
         <h3>Users Age Range</h3>
-        <ChartBar :height="250" :chartdata="chartdata" :options="options"/>
+        <ChartBar :height="300" :chartdata="chartdata" :options="options"/>
     </div>
 </template>
 

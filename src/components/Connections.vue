@@ -1,7 +1,7 @@
 <template>
     <div class="chart">
         <h3>Monthly Connections</h3>
-        <ChartLine :height="250" :chartData="chartdata" :options="options"/>
+        <ChartLine :height="300" :chartData="chartdata" :options="options"/>
     </div>
 </template>
 
